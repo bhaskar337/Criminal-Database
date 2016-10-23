@@ -1,0 +1,158 @@
+*{
+    box-sizing: border-box;
+}
+*:focus{
+	outline:none;
+}
+body {
+    margin:0;
+    background:url(Assets/back.jpg);
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+#login{
+	margin-left:20px;
+	padding-top:20px;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:transparent;
+    top: 0;
+    width: 100%;
+}
+
+.navbar li {
+    float: left;
+    font-size:18px;
+    font-family:'Allerta',sans-serif;
+}
+
+.navbar li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: rgba(0,0,0,0.1);
+}
+#active {
+    background-color: rgba(0,0,0,0.4);
+}
+h1 {
+	color: rgb(251,211,27);
+	text-align: center;
+	font-size:40px;
+	padding-top:20px;
+    font-family:'Nunito',cursive;
+}
+input{
+    width: 320px;
+    border-color:transparent;
+    font-size: 16px;
+    color: white;
+    font-family:'Allerta',sans-serif;
+    background-color: rgba(0,0,0,0.6);
+    background-size: 25px;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    margin: 0 0 20px 0;
+ }
+ input:focus{
+    background-color: rgba(0,0,0,0.85);
+ }
+ input[type=submit]{
+ 	width: 100px;
+ 	height: 50px;
+    padding: 5px 5px 5px 5px;
+ }
+ #name{
+    font-size: 25px;
+    color: white;
+    text-align: center;
+ }
+ .main{
+ 	margin:150px 400px 0 400px;
+ 	background-color:rgba(0,0,0,0.5);
+ }
+ 
+ .box{
+ 	margin:10px 0px;
+ }
+ .ip{
+ font-family:Allerta,sans-serif;
+ }
+ #password{
+ 	margin-left:5px;
+    margin-bottom: 0px;
+ }
+ .bdy{
+  margin:0 300px;
+  height:655px;
+  font-family:Allerta,sans-serif;
+  text-align:left;
+  background-color:rgba(0,0,0,0.4);
+ }
+ .fn{
+ margin-right: 110px;
+ }
+ .ln{
+ margin-right: 110px;
+ }
+  .email{
+ margin-right: 140px;
+ }
+  .rank{
+ margin-right: 180px;
+ }
+  .bnum{
+ margin-right: 115px;
+ }
+  .pass{
+ margin-right: 125px;
+ }
+ .rpass{
+ margin-right:10px;
+ }
+ #lgn{
+ 	margin:37px 155px 0 300px;
+ 	padding-bottom:5px;
+ }
+ #submit{
+ width:100px;
+ height:50px;
+ margin-left:450px;
+ background:transparent;
+ cursor:pointer;
+ }
+ #cd{
+ 	padding-top:40px;
+ 	font-size:40px;
+ }
+
+ #submit:hover{
+ background-color:rgba(0,0,0,0.6);
+ }
+
+#error{
+    color: rgba(251,211,27,0.8); 
+    font-size: 16px;
+    margin-left: 200px;
+    padding: 0px;
+    position: absolute;
+}
+
+#error_reg{
+    color: rgba(251,211,27,0.8); 
+    font-size: 14px;
+    margin-left: 75px;
+    padding: 0px;
+    position: absolute;
+}

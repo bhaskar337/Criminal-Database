@@ -1,0 +1,216 @@
+.box img{
+    height: 60px;
+    opacity: 0.29;
+    position: absolute;
+    cursor: pointer;
+}
+#box1{
+    height: 80px;
+    margin: 190px 0px 0px 15px;
+}
+#box2{
+    margin: 38px 0px 0px 120px;
+}
+#box3{
+    margin: 20px 0px 0px 197px;
+}
+#box4{
+    margin: 35px 0px 0px 263px;
+}
+#box5{
+    margin: 110px 0px 0px 335px;
+}
+#box{
+    margin: 36px 123px;
+    position: absolute;
+    opacity: 0.1;
+    height: 170px;
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 500px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes zoom {
+    from {transform: scale(0.1)} 
+    to {transform: scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+ul.tab {
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+    margin-bottom: 0px;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: white;
+    outline:none;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    font-family:'Allerta',sans-serif;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: rgba(0,0,0,0.7);
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+}
+
+.bio_details{
+    width:700px;
+    height: 500px;
+    position:relative;
+    background-color: rgba(0,0,0,0.4);
+    font-size:24px;
+    border:10px solid rgba(0,0,0,0.5);
+    left:320px;
+    right:100px;
+    color:white;
+    line-height:50px;
+    font-family:'Allerta',sans-serif;
+    top:75px;
+}
+
+#myImg {
+    border-radius: 5px;
+    margin: 0px;
+    position: absolute;
+}
+
+#finger{
+    width: 480px;
+}
+
+#eye{
+    margin: 0px;
+    position: absolute;
+}
+
+#Biometric{
+    padding: 0px;
+    margin: 15px 60px 0px 0px;
+    color: white;
+    font-size: 20px;
+}
+
+div.details{
+    background-color: rgba(0,0,0,0.5);
+    border-width: 2px;
+    border-color: black;
+    margin-left: 400px;
+    padding: 10px 0px 28px 50px;
+    margin-top: 0px;
+}
+
+#cid{
+    margin:0px 0px 20px 45px;
+}
+#image{
+	position:absolute;
+    border-style: solid;
+    border-color: black;
+    border-radius: 4px;
+    width: 150px;
+    margin-left: 18px;
+}
+#name{
+    margin-top: 240px;
+}
+
+#iris{
+    width: 600px;
+}
+#info{
+    position: absolute;
+    font-size: 20px;
+    margin-left: 60px;
+    margin-top:300px;
+}
+#basic{
+    position: absolute;
+    margin-left: 40px;
+}

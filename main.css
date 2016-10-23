@@ -1,0 +1,115 @@
+*{
+ box-sizing:border-box;
+}
+body {
+    margin:0;
+    background:url(Assets/back.jpg);
+    background-size:100%;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+}
+img{
+	size:1%;
+}
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:transparent;
+    top: 0;
+    width: 100%;
+}
+
+.navbar li {
+    float: left;
+    font-size:18px;
+    font-family:'Allerta',sans-serif;
+}
+
+.navbar li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: rgba(0,0,0,0.1);
+}
+
+#active {
+    background-color: rgba(0,0,0,0.4);
+}
+#c{
+    font-size: 90px;
+    margin: 200px 0px 0px 450px;
+    color: rgb(251,211,27); 
+
+}
+#rime-in{
+    font-size: 60px;
+}
+#dex{
+   
+    font-size: 90px;
+    color: rgb(251,211,27); 
+}
+.name p{
+    margin-bottom: 30px;
+    display: inline-block;
+    font-family:'Nunito',cursive;
+    color: #FFFFFF;
+}
+.search {
+    width: 500px;
+    box-sizing: border-box;
+    border-color:transparent;
+    font-size: 16px;
+    font-family:Allerta,sans-serif;
+    color:white;
+    background-color:rgba(0,0,0,0.4);
+    background-image: url('Assets/searchicon.png');
+    background-size: 25px;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    margin: 0px 0px 0px 420px;
+}
+.search:focus{
+	background-color:rgba(0,0,0,0.6);
+	outline:none;
+}
+.search:hover{
+	background-color:rgba(0,0,0,0.6);
+}
+.button {
+    background-color: rgba(0,0,0,0.4); 
+    border: none;
+    position:relative;
+    color: white;
+    font-family:'Allerta',cursive;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
+    left:580px;
+    top:30px;
+    outline:none;
+}
+.button:hover{
+	background-color:rgba(0,0,0,0.6);
+}
+#id{
+    font-size: 18px;
+    margin-left: 1220px;
+    position: absolute;
+    float: right;
+    font-family:'Allerta',sans-serif;
+    color: rgb(251,211,27); 
+}
+
+		
