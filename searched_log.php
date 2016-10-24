@@ -33,26 +33,94 @@ require_once('../connect.php');
 
 $id=101;
 
-$query="SELECT criminal_fname,criminal_lname, criminal_gender,year(NOW()-criminal_dob), criminal_image from criminal where criminal_id=".$id;
+/********************* TABLE CRIMINAL *********************/
+
+$query="SELECT criminal_fname,criminal_lname, criminal_gender,criminal_dob, year(NOW())-year(criminal_dob), criminal_image,criminal_type from criminal where criminal_id=".$id;
         
 $response = mysqli_query($dbc, $query);
+if (!is_bool($response)){
 
-$row=mysqli_fetch_row($response);
+  $row=mysqli_fetch_row($response);
 
-$fname=$row[0];
-$lname=$row[1]; 
-$gender=$row[2];
-$age=$row[3];
-$image=$row[4];
+  $fname=$row[0];
+  $lname=$row[1]; 
+  $gender=$row[2];
+  $dob="Date of birth: ".$row[3];
+  $age=$row[4];
+  $image=$row[5];
+  $type=$row[6];
+}
+
+/********************* TABLE CRIME TYPE *********************/
+
 
 $query="SELECT criminal_ctype from crime_type where criminal_id=".$id;
         
 $response = mysqli_query($dbc, $query);
 
 $ctype= array();
+if (!is_bool($response)){
 
-while($row=mysqli_fetch_row($response)){
-  $ctype[]=$row[0];
+  while($row=mysqli_fetch_row($response)){
+    $ctype[]=$row[0];
+  }
+}
+
+/********************* TABLE CRIMINAL ADRESS *********************/
+
+
+$query="SELECT country,state,city,pin from criminal_adress where criminal_id=".$id;
+
+$response = mysqli_query($dbc, $query);
+if (!is_bool($response)){
+
+  $row=mysqli_fetch_row($response);
+
+  $country="Country: ".$row[0];
+  $state="State: ".$row[1];
+  $city="City: ".$row[2];
+  $pin="Pincode: ".$row[3];
+}
+
+/********************* TABLE CONVICT/EXCONVICT/WANTED *********************/
+
+
+if ($type="convict"){
+
+  $query="SELECT conduct,sentence from convict where criminal_id=".$id;
+  $response = mysqli_query($dbc, $query);
+  if (!is_bool($response)){
+
+    $row=mysqli_fetch_row($response);
+
+    $sentence="Sentence: ".$row[1]." years";
+    $conduct="Conduct :".$row[0];
+  }
+}
+
+else if ($type="exconvict"){
+
+  $query="SELECT previous_jailtime,alive from exconvict where criminal_id=".$id;
+  $response = mysqli_query($dbc, $query);
+  if (!is_bool($response)){
+
+    $row=mysqli_fetch_row($response);
+
+    $pjt="Previous jail time: ".$row[0]." years";
+    $alive="Currenly ".$row[1];
+  }
+}
+
+else if ($type="wanted"){
+
+  $query="SELECT potential_penalty from wanted where criminal_id=".$id;
+  $response = mysqli_query($dbc, $query);
+  if (!is_bool($response)){
+
+    $row=mysqli_fetch_row($response);
+
+    $ppen="Potential Penalty: ".$row[0]." years";
+  }
 }
 
   	echo "<div class='result'>
@@ -80,11 +148,39 @@ while($row=mysqli_fetch_row($response)){
               <button class='accordion'>Crime Types</button>
               <div class='panel'>";
                 for ($i=0;$i<sizeof($ctype);$i++){
-                  echo " <p>".$ctype[$i]."</p>";
+          
+                  echo $ctype[$i]."<br>";
                 }
              echo "</div> 
             </td>
-            <td> 
+            <td>
+              <button class='accordion'>More Information</button>
+              <div class='panel'>";
+              if ($type=='convict'){
+                $type=ucwords($type);
+                echo "<p>$type<br>$sentence<br>$conduct</p>";
+              }
+              else if ($type=='exconvict'){
+                $type=ucwords($type);
+                echo "<p>$type<br>$pjt<br>$alive</p>";
+              }
+              else if ($type=='wanted'){
+                $type=ucwords($type);
+                echo "<p>$type<br>$ppen</p>";
+              }
+
+              echo "</div> 
+            </td> 
+  				</tr>
+          <tr>
+          <tr >
+            <td>
+              <button class='accordion'>Personal Details</button>
+              <div class='panel'>
+                <p>$dob<br>$country<br>$state<br>$city<br>$pin</p>
+              </div> 
+            </td>
+             <td> 
                 <form action='http://localhost:80/bio_details.php' method='post'>
                   <input type='hidden' name='id' value= $id>
                   <input type='hidden' name='fname' value= $fname>
@@ -94,16 +190,6 @@ while($row=mysqli_fetch_row($response)){
                   <img id='arrow' src='Assets/arrow.png'>
                 </form>
             </td>
-  				</tr>
-          <tr>
-          <tr class='info'>
-            <td colspan=2>
-              <button class='accordion'>More Information</button>
-              <div class='panel'>
-                <p>Discription:<br>History:<br>Current whereabouts:</p>
-              </div> 
-            </td>
-
           </tr>
           <tr>
   			</tbody>
@@ -121,12 +207,12 @@ for (i = 0; i < acc.length; i++) {
         this.nextElementSibling.classList.toggle("show");
         isActive=(isActive==1)?0:1;
         if(isActive){
-          window.setTimeout(myTimer,300);
+          window.setTimeout(myTimer,400);
         }
   }
 }
 function myTimer(){
-  window.scrollBy(0, 500);
+  window.scrollBy(0, 1000);
 }
 
 

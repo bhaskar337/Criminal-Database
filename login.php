@@ -17,28 +17,32 @@ if (isset($_POST["submit"])){
         
             require_once('../connect.php');
             
-            $query = "SELECT officer_password from officer where officer_id=".$id;
+            $query = "SELECT officer_password from officer where officer_id=$id";
             
             $response = mysqli_query($dbc, $query);
 
-            $row=mysqli_fetch_row($response);
-            
-            $correctPassword=$row[0];
+            if (!is_bool($response)){
 
-            if (password_verify($_POST['password'],$correctPassword)){
+                $row=mysqli_fetch_row($response);
+                
+                $correctPassword=$row[0];
 
-                session_start();
+                if (password_verify($_POST['password'],$correctPassword)){
 
-                $_SESSION["id"] = $id;
-                header("Location: http://localhost:80/index_log.php");
-                exit();
-            }
-            else{
-                $incorrect=2;
-            }
-            mysqli_close($dbc);  
+                    session_start();
+
+                    $_SESSION["id"] = $id;
+                    header("Location: http://localhost:80/index_log.php");
+                    exit();
+                }
+                else{
+                    $incorrect=2;
+                }
+                mysqli_close($dbc);  
+        }
+        else $incorrect=1;  
     }
-    else $incorrect=1;  
+    else $incorrect=1;
 }
 ?>
     <div class="navbar">
@@ -55,7 +59,7 @@ if (isset($_POST["submit"])){
         <form id="name" action="http://localhost:80/login.php" method="post">
             <div class="ip">
                 <div class="box">
-                    Badge ID : <input type="text" name="id">
+                    Badge ID : <input type="text" name="id"  value="<?php echo isset($_POST['id']) ? $_POST['id'] : '' ?>">
                 </div>
                 <div class="box">
                     Password : <input type="password" name="password" id="password">

@@ -24,17 +24,23 @@ require_once('../connect.php');
 
 $id=101;
 
-$query="SELECT criminal_fname,criminal_lname, criminal_gender,year(NOW()-criminal_dob), criminal_image from criminal where criminal_id=".$id;
+/********************* TABLE CRIMINAL *********************/
+
+$query="SELECT criminal_fname,criminal_lname, criminal_gender,year(NOW())-year(criminal_dob), criminal_image from criminal where criminal_id=".$id;
         
 $response = mysqli_query($dbc, $query);
+if (!is_bool($response)){
 
-$row=mysqli_fetch_row($response);
+  $row=mysqli_fetch_row($response);
 
-$fname=$row[0];
-$lname=$row[1]; 
-$gender=$row[2];
-$age=$row[3];
-$image=$row[4];
+  $fname=$row[0];
+  $lname=$row[1]; 
+  $gender=$row[2];
+  $age=$row[3];
+  $image=$row[4];
+}
+
+/********************* TABLE CRIME TYPE *********************/
 
 $query="SELECT criminal_ctype from crime_type where criminal_id=".$id;
         
@@ -42,8 +48,52 @@ $response = mysqli_query($dbc, $query);
 
 $ctype= array();
 
-while($row=mysqli_fetch_row($response)){
-  $ctype[]=$row[0];
+if (!is_bool($response)){
+
+  while($row=mysqli_fetch_row($response)){
+    $ctype[]=$row[0];
+  }
+}
+
+/********************* TABLE CONVICT/EXCONVICT/WANTED *********************/
+
+
+if ($type="convict"){
+
+  $query="SELECT conduct,sentence from convict where criminal_id=".$id;
+  $response = mysqli_query($dbc, $query);
+  if (!is_bool($response)){
+
+    $row=mysqli_fetch_row($response);
+
+    $sentence="Sentence: ".$row[1]." years";
+    $conduct="Conduct :".$row[0];
+  }
+}
+
+else if ($type="exconvict"){
+
+  $query="SELECT previous_jailtime,alive from exconvict where criminal_id=".$id;
+  $response = mysqli_query($dbc, $query);
+  if (!is_bool($response)){
+
+    $row=mysqli_fetch_row($response);
+
+    $pjt="Previous jail time: ".$row[0]." years";
+    $alive="Currenly ".$row[1];
+  }
+}
+
+else if ($type="wanted"){
+
+  $query="SELECT potential_penalty from wanted where criminal_id=".$id;
+  $response = mysqli_query($dbc, $query);
+  if (!is_bool($response)){
+
+    $row=mysqli_fetch_row($response);
+
+    $ppen="Potential Penalty: ".$row[0]." years";
+  }
 }
 
   	echo "<div class='result'>
@@ -70,15 +120,26 @@ while($row=mysqli_fetch_row($response)){
               <button class='accordion'>Crime Types</button>
               <div class='panel'>";
                 for ($i=0;$i<sizeof($ctype);$i++){
-                  echo " <p>".$ctype[$i]."</p>";
+                  echo $ctype[$i]."<br>";
                 }
              echo "</div> 
             </td>
             <td colspan=2>
               <button class='accordion'>More Information</button>
-              <div class='panel'>
-                <p>Discription:<br>History:<br>Current whereabouts:</p>
-              </div> 
+              <div class='panel'>";
+                 if ($type=='convict'){
+                  $type=ucwords($type);
+                  echo "<p>$type<br>$sentence<br>$conduct</p>";
+                }
+                else if ($type=='exconvict'){
+                  $type=ucwords($type);
+                  echo "<p>$type<br>$pjt<br>$alive</p>";
+                }
+                else if ($type=='wanted'){
+                  $type=ucwords($type);
+                  echo "<p>$type<br>$ppen</p>";
+                }
+              echo "</div> 
             </td>
           <tr>
   			</tbody>
