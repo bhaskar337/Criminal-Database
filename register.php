@@ -197,19 +197,19 @@ if (isset($_POST["submit"])){
 
         <form id="name" action="http://localhost:80/register.php" method="post">
             <div>
-                <span class="fn">First Name : </span> <input type="text" name="fname"  value="<?php echo isset($_POST['fname']) ? $_POST['fname'] : '' ?>" >
+                <span class="fn">First Name : </span> <input type="text" name="fname"  value=<?php echo isset($_POST['fname']) ? $_POST['fname'] : '' ?>>
             </div>
             <div>
-                <span class="ln">Last Name : </span><input type="text" name="lname" value="<?php echo isset($_POST['lname']) ? $_POST['lname'] : '' ?>">
+                <span class="ln">Last Name : </span><input type="text" name="lname" value=<?php echo isset($_POST['lname']) ? $_POST['lname'] : '' ?>>
             </div>
             <div>
-                <span class="email">Email-id : </span> <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
+                <span class="email">Email-id : </span> <input type="email" name="email" value=<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>>
             </div>
             <div>
-                <span class="rank">Rank : </span> <input type="text" name="rank" value="<?php echo isset($_POST['rank']) ? $_POST['rank'] : '' ?>">
+                <span class="rank">Rank : </span> <input type="text" name="rank" value=<?php echo isset($_POST['rank']) ? $_POST['rank'] : '' ?>>
             </div>
             <div>
-                <span class="bnum">Badge No. : </span> <input type="text" name="id" value="<?php echo isset($_POST['id']) ? $_POST['id '] : '' ?>">
+                <span class="bnum">Badge No. : </span> <input type="text" name="id" value=<?php echo isset($_POST['id']) ? $_POST['id'] : '' ?>>
             </div>
             <div>
                 <span class="pass">Password : </span> <input type="password" name="password">

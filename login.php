@@ -59,7 +59,7 @@ if (isset($_POST["submit"])){
         <form id="name" action="http://localhost:80/login.php" method="post">
             <div class="ip">
                 <div class="box">
-                    Badge ID : <input type="text" name="id"  value="<?php echo isset($_POST['id']) ? $_POST['id'] : '' ?>">
+                    Badge ID : <input type="text" name="id"  value=<?php echo isset($_POST['id']) ? $_POST['id'] : '' ?>>
                 </div>
                 <div class="box">
                     Password : <input type="password" name="password" id="password">
