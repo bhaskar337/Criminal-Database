@@ -59,9 +59,10 @@ session_start();
 
         for ($i='A';$i<='Z';$i++){
 
-           $query="SELECT CONCAT(criminal_fname,' ',criminal_lname),criminal_image,criminal_type from criminal where criminal_fname like '$i%'";
+           $query="SELECT criminal_id,CONCAT(criminal_fname,' ',criminal_lname),criminal_image,criminal_type from criminal where criminal_fname like '$i%'";
             $response = mysqli_query($dbc, $query);
-  
+            
+            $id= array();
             $name= array();
             $image= array();
             $type = array();
@@ -69,9 +70,10 @@ session_start();
             if (!is_bool($response)){
 
               while($row=mysqli_fetch_row($response)){
-                $name[]=$row[0];
-                $image[]=$row[1];
-                $type[]=ucwords($row[2]);
+                $id[]=$row[0];
+                $name[]=$row[1];
+                $image[]=$row[2];
+                $type[]=ucwords($row[3]);
               }
             }
   
@@ -94,7 +96,7 @@ session_start();
               for ($j=0;$j<sizeof($name);$j++){
 
                 echo "
-                <tr>
+                <tr id='$id[$j]' onClick='getRow(this.id)'>
                   <td><img src='$image[$j]' height='150px'></td>
                   <td>$name[$j]</td>
                   <td>$type[$j]</td>
@@ -114,6 +116,11 @@ session_start();
     </div>
 
 <script>
+
+function getRow(id)
+{
+    window.location="http://localhost:80/searched_log.php?id="+id;
+}
 
 window.onload = function () {
     document.getElementById("default").focus();

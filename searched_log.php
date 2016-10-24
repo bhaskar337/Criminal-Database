@@ -29,9 +29,7 @@ session_start();
 
 require_once('../connect.php');
         
-//$id=$_GET['id'];
-
-$id=101;
+$id=$_GET['id'];
 
 /********************* TABLE CRIMINAL *********************/
 
