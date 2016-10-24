@@ -15,7 +15,7 @@ session_start();
   <div class="navbar">
     <ul>
       <li><a id="active" href="">Home</a></li>
-      <li><a href="#">Criminal Records</a></li>
+      <li><a href="http://localhost:80/records_log.php">Criminal Records</a></li>
       <li><a href="#">About</a></li>
       <li style="float:right"><a href="http://localhost:80/index.html">Logout</a></li>
       <li style="float:right"><a href="#">Enter new record</a></li>

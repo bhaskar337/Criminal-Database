@@ -23,19 +23,23 @@ require_once('../connect.php');
 $query = "SELECT height,weight,blood_group,hand_print,iris_scan from biometric_details where criminal_ID=".$id;
         
 $response = mysqli_query($dbc, $query);
+if (!is_bool($response)){
 
-$row=mysqli_fetch_row($response);
+  $row=mysqli_fetch_row($response);
 
-$height=$row[0];
-$weight=$row[1];
-$blood=$row[2];
-$hand=$row[3];
-$eye=$row[4];
+  $height=$row[0];
+  $weight=$row[1];
+  $blood=$row[2];
+  $hand=$row[3];
+  $eye=$row[4];
+}
+mysqli_close($dbc); 
+
 ?>
     <div class="navbar">
       <ul>
         <li><a href="http://localhost:80/index_log.php">Home</a></li>
-        <li><a href="#" id="active">Criminal Records</a></li>
+        <li><a href="http://localhost:80/records_log.php id="active">Criminal Records</a></li>
         <li><a href="#">About</a></li>
         <li style="float:right"><a href="http://localhost:80/index.html">Logout</a></li>
         <li style="float:right"><a href="">Enter new record</a></li>

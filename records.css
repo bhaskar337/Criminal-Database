@@ -1,0 +1,131 @@
+
+body {
+    margin:0;
+    background:url(Assets/back.jpg);
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    top: 0;
+    width: 100%;
+}
+
+.navbar li {
+    float: left;
+    font-size:18px;
+    font-family:'Allerta',sans-serif;
+}
+
+.navbar li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: rgba(0,0,0,0.1);
+}
+#active {
+    background-color: rgba(0,0,0,0.4);
+}
+table{
+    border: 8px solid rgba(0,0,0,0.7);
+    width: 900px;
+    margin: 50px 0px 0px 230px;
+    table-layout: fixed;
+}
+th{
+    border:3px solid rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.5);
+    height: 60px;
+    text-align: center;
+    font-size: 18px;
+}
+td{
+    border:3px solid rgba(0,0,0,0.5);       
+    height: 80px;
+    width: 300px;
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.4);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+tr{
+    border:3px solid rgba(0,0,0,0.5);       
+    height: 80px;
+    width: 300px;
+    margin: 0px 0px 0px 230px;
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.4);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+tr:hover{
+        background-color: rgba(0,0,0,0.6);
+}
+#image{
+    height: 90px;
+}
+.txt{
+    font-family:'Allerta',cursive;
+    color: white;
+}
+
+.tabcontent {
+    display: none;
+}
+
+ul.tab {
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.4);
+    margin-bottom: 0px;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: white;
+    outline:none;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    font-family:'Allerta',sans-serif;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: rgba(0,0,0,0.4);
+}
+#id{
+    font-size: 18px;
+    margin-left: 1220px;
+    margin-top:12px;
+    position: absolute;
+    float: right;
+    font-family:'Allerta',sans-serif;
+    color: rgb(251,211,27); 
+}

@@ -12,7 +12,7 @@ session_start();
 	<div class="navbar">
     <ul>
       <li><a href="http://localhost:80/index_log.php">Home</a></li>
-      <li><a href="#" id="active">Criminal Records</a></li>
+      <li><a href="http://localhost:80/records_log.php id="active">Criminal Records</a></li>
       <li><a href="#">About</a></li>
       <li style="float:right"><a href="http://localhost:80/index.html">Logout</a></li>
       <li style="float:right"><a href="">Enter new record</a></li>
@@ -122,6 +122,8 @@ else if ($type="wanted"){
     $ppen="Potential Penalty: ".$row[0]." years";
   }
 }
+
+  mysqli_close($dbc); 
 
   	echo "<div class='result'>
   		<table>

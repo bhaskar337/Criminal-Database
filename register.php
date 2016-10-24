@@ -186,7 +186,7 @@ if (isset($_POST["submit"])){
         <div class="navbar">
         <ul>
             <li><a href="http://localhost:80/index.html">Home</a></li>
-            <li><a href="#">Criminal Records</a></li>
+            <li><a href="http://localhost:80/records.php">Criminal Records</a></li>
             <li><a href="#">About</a></li>
             <li style="float:right"><a href="http://localhost:80/login.php">Login</a></li>
             <li style="float:right"><a id="active" href="">Register</a></li>
