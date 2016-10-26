@@ -10,7 +10,7 @@
 	<div class="navbar">
     	<ul>
       	<li><a href="http://localhost:80/index.html">Home</a></li>
-        <li><a href="http://localhost:80/records.php" id="active">Criminal Records</a></li>
+        <li><a href="" id="active">Criminal Records</a></li>
         <li><a href="#">About</a></li>
         <li style="float:right"><a href="http://localhost:80/login.php">Login</a></li>
         <li style="float:right"><a href="http://localhost:80/register.php">Register</a></li>
@@ -65,7 +65,7 @@
               while($row=mysqli_fetch_row($response)){
                 $id[]=$row[0];
                 $name[]=$row[1];
-                $image[]=$row[2];
+                $image[]="/Images/".$row[2];
                 $type[]=ucwords($row[3]);
               }
             }

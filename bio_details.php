@@ -30,25 +30,30 @@ if (!is_bool($response)){
   $height=$row[0];
   $weight=$row[1];
   $blood=$row[2];
-  $hand=$row[3];
-  $eye=$row[4];
+  $hand="Assets/".$row[3];
+  $eye="Assets/".$row[4];
 }
 mysqli_close($dbc); 
 
 ?>
     <div class="navbar">
       <ul>
-        <li><a href="http://localhost:80/index_log.php">Home</a></li>
-        <li><a href="http://localhost:80/records_log.php id="active">Criminal Records</a></li>
+        <li><a href="index_log.php">Home</a></li>
+        <li><a id="active" href="records_log.php">Criminal Records</a></li>
         <li><a href="#">About</a></li>
-        <li style="float:right"><a href="http://localhost:80/index.html">Logout</a></li>
-        <li style="float:right"><a href="">Enter new record</a></li>
+        <li style="float:right"><a href="index.html">Logout</a></li>
+        <li style="float:right"><a href="enterRecord.php">Enter new record</a></li>
       </ul>
       <div id="id"> 
       Batch ID: 
       <?php   
+       if (!isset($_SESSION["id"])){
+        header("Location: http://localhost:80/index.html");
+        exit();
+      }
       echo $_SESSION["id"];
       ?>
+    </div>
     </div>
 
     <div class="bio_details">

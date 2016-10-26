@@ -18,13 +18,19 @@
   	<?php
 
 
+if(!isset($_GET['id'])){
+
+  header("Location: http://localhost:80/index.html");
+}
+
+$id=$_GET['id'];
 require_once('../connect.php');
         
-$id=$_GET['id'];
+
 
 /********************* TABLE CRIMINAL *********************/
 
-$query="SELECT criminal_fname,criminal_lname, criminal_gender,year(NOW())-year(criminal_dob), criminal_image from criminal where criminal_id=".$id;
+$query="SELECT criminal_fname,criminal_lname, criminal_gender, year(NOW())-year(criminal_dob), criminal_image,criminal_type from criminal where criminal_id=".$id;
         
 $response = mysqli_query($dbc, $query);
 if (!is_bool($response)){
@@ -35,116 +41,133 @@ if (!is_bool($response)){
   $lname=$row[1]; 
   $gender=$row[2];
   $age=$row[3];
-  $image=$row[4];
-}
+  $image="/Images/".$row[4];
+  $type=$row[5];
 
-/********************* TABLE CRIME TYPE *********************/
+  if ($fname!=NULL){
+    /********************* TABLE CRIME TYPE *********************/
 
-$query="SELECT criminal_ctype from crime_type where criminal_id=".$id;
-        
-$response = mysqli_query($dbc, $query);
+    $query="SELECT criminal_ctype from crime_type where criminal_id=".$id;
+            
+    $response = mysqli_query($dbc, $query);
 
-$ctype= array();
+    $ctype= array();
 
-if (!is_bool($response)){
+    if (!is_bool($response)){
 
-  while($row=mysqli_fetch_row($response)){
-    $ctype[]=$row[0];
+      while($row=mysqli_fetch_row($response)){
+        $ctype[]=$row[0];
+      }
+    }
+
+    /********************* TABLE CONVICT/EXCONVICT/WANTED *********************/
+
+    if ($type=="convict"){
+
+      $query="SELECT conduct,sentence from convict where criminal_id=".$id;
+      $response = mysqli_query($dbc, $query);
+      if (!is_bool($response)){
+
+        $row=mysqli_fetch_row($response);
+
+        $sentence="Sentence: ".$row[1]." years";
+        $conduct="Conduct :".$row[0];
+      }
+    }
+
+    else if ($type=="exconvict"){
+
+      $query="SELECT previous_jailtime,alive from exconvict where criminal_id=".$id;
+      $response = mysqli_query($dbc, $query);
+      if (!is_bool($response)){
+
+        $row=mysqli_fetch_row($response);
+
+        $pjt="Previous jail time: ".$row[0]." years";
+        $alive="Alive: ".$row[1];
+      }
+    }
+
+    else if ($type=="wanted"){
+
+      $query="SELECT potential_penalty from wanted where criminal_id=".$id;
+      $response = mysqli_query($dbc, $query);
+      if (!is_bool($response)){
+
+        $row=mysqli_fetch_row($response);
+
+        $ppen="Potential Penalty: ".$row[0]." years";
+      }
+    }
+
+      	echo "<div class='result'>
+      		<table>
+      			<thead>
+      				<th>$fname $lname</th>
+      				<th><img src='$image' id='image'></th>
+      			</thead>
+      			<tbody>
+      				<tr>
+      					<td>ID: </td>
+      					<td>$id</td>
+      				</tr>
+      				<tr>
+      					<td>Age: </td>
+      					<td>$age</td>
+      				</tr>
+      				<tr>
+      					<td>Gender: </td>
+      					<td>$gender</td>
+      				</tr>
+      				<tr>
+      					<td>
+                  <button class='accordion'>Crime Types</button>
+                  <div class='panel'>";
+                    for ($i=0;$i<sizeof($ctype);$i++){
+                      echo $ctype[$i]."<br>";
+                    }
+                 echo "</div> 
+                </td>
+                <td colspan=2>
+                  <button class='accordion'>More Information</button>
+                  <div class='panel'>";
+                     if ($type=='convict'){
+                      $type=ucwords($type);
+                      echo "<p>$type<br>$sentence<br>$conduct</p>";
+                    }
+                    else if ($type=='exconvict'){
+                      $type=ucwords($type);
+                      echo "<p>$type<br>$pjt<br>$alive</p>";
+                    }
+                    else if ($type=='wanted'){
+                      $type=ucwords($type);
+                      echo "<p>$type<br>$ppen</p>";
+                    }
+                  echo "</div> 
+                </td>
+              <tr>
+      			</tbody>
+      		</table>
+      	</div>";
+      }
+    else{
+    echo "
+      <table class='result'>
+            <thead>
+              <th>Error 404: No results found<br>Criminal ID : $id doesn't exists</th>
+            </thead>
+        </table>";
+    }
   }
-}
-
-/********************* TABLE CONVICT/EXCONVICT/WANTED *********************/
-
-
-if ($type="convict"){
-
-  $query="SELECT conduct,sentence from convict where criminal_id=".$id;
-  $response = mysqli_query($dbc, $query);
-  if (!is_bool($response)){
-
-    $row=mysqli_fetch_row($response);
-
-    $sentence="Sentence: ".$row[1]." years";
-    $conduct="Conduct :".$row[0];
+  else{
+    echo "
+      <table class='result'>
+            <thead>
+              <th>Error 404: No results found<br>Criminal ID : $id doesn't exists</th>
+            </thead>
+        </table>";
   }
-}
-
-else if ($type="exconvict"){
-
-  $query="SELECT previous_jailtime,alive from exconvict where criminal_id=".$id;
-  $response = mysqli_query($dbc, $query);
-  if (!is_bool($response)){
-
-    $row=mysqli_fetch_row($response);
-
-    $pjt="Previous jail time: ".$row[0]." years";
-    $alive="Currenly ".$row[1];
-  }
-}
-
-else if ($type="wanted"){
-
-  $query="SELECT potential_penalty from wanted where criminal_id=".$id;
-  $response = mysqli_query($dbc, $query);
-  if (!is_bool($response)){
-
-    $row=mysqli_fetch_row($response);
-
-    $ppen="Potential Penalty: ".$row[0]." years";
-  }
-}
-
-mysqli_close($dbc);  
-
-  	echo "<div class='result'>
-  		<table>
-  			<thead>
-  				<th>$fname $lname</th>
-  				<th><img src='$image' id='image'></th>
-  			</thead>
-  			<tbody>
-  				<tr>
-  					<td>ID: </td>
-  					<td>$id</td>
-  				</tr>
-  				<tr>
-  					<td>Age: </td>
-  					<td>$age</td>
-  				</tr>
-  				<tr>
-  					<td>Gender: </td>
-  					<td>$gender</td>
-  				</tr>
-  				<tr>
-  					<td>
-              <button class='accordion'>Crime Types</button>
-              <div class='panel'>";
-                for ($i=0;$i<sizeof($ctype);$i++){
-                  echo $ctype[$i]."<br>";
-                }
-             echo "</div> 
-            </td>
-            <td colspan=2>
-              <button class='accordion'>More Information</button>
-              <div class='panel'>";
-                 if ($type=='convict'){
-                  $type=ucwords($type);
-                  echo "<p>$type<br>$sentence<br>$conduct</p>";
-                }
-                else if ($type=='exconvict'){
-                  $type=ucwords($type);
-                  echo "<p>$type<br>$pjt<br>$alive</p>";
-                }
-                else if ($type=='wanted'){
-                  $type=ucwords($type);
-                  echo "<p>$type<br>$ppen</p>";
-                }
-              echo "</div> 
-            </td>
-          <tr>
-  			</tbody>
-  		</table>
-  	</div>";
+  mysqli_close($dbc);  
 
     ?>
 <script>

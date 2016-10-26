@@ -12,18 +12,23 @@ session_start();
 	<div class="navbar">
     	<ul>
          <li><a href="http://localhost:80/index_log.php">Home</a></li>
-         <li><a href="http://localhost:80/records_log.php id="active">Criminal Records</a></li>
+         <li><a href="" id="active">Criminal Records</a></li>
          <li><a href="#">About</a></li>
          <li style="float:right"><a href="http://localhost:80/index.html">Logout</a></li>
-         <li style="float:right"><a href="">Enter new record</a></li>
+         <li style="float:right"><a href="enterRecord.php">Enter new record</a></li>
     	</ul>
       <div id="id"> 
         Batch ID: 
-        <?php   
+        <?php 
+         if (!isset($_SESSION["id"])){
+	        header("Location: http://localhost:80/records.php");
+	        exit();
+      	}  
         echo $_SESSION["id"];
         ?>
       </div>
   </div>
+  
     <div class="records">
       <ul class="tab">
         <li style="float:left"><a id="default" href="#" class="tablinks" onclick="openCriminal(event,'A')">A</a></li>
@@ -72,7 +77,7 @@ session_start();
               while($row=mysqli_fetch_row($response)){
                 $id[]=$row[0];
                 $name[]=$row[1];
-                $image[]=$row[2];
+                $image[]="/Images/".$row[2];
                 $type[]=ucwords($row[3]);
               }
             }

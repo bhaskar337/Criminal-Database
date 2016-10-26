@@ -1,0 +1,280 @@
+*{
+	//border:1px solid black;
+}
+
+#badgeID{
+	margin: 20px 150px 0px 0px;
+	font-size:18px;
+	float: right;
+	color:white;
+    font-family:'Allerta',sans-serif;
+}
+
+#c{
+    font-size: 60px;
+    margin: 60px 0px 0px 250px;
+    color: rgb(251,211,27); 
+
+}
+.nm{
+    margin-bottom: 30px;
+position:relative;
+    display: inline-block;
+    font-family:'Nunito',cursive;
+    color: #FFFFFF;
+}
+p{
+	display:inline-block;
+}
+.mn{
+	background-color:rgba(0,0,0,0.4);
+	margin-left:130px;
+	margin-right:96px;
+	margin-bottom:50px;
+}
+#rime-in{
+    font-size: 45px;
+}
+
+#dex{
+    font-size: 60px;
+}
+
+input[type=text]{
+    width: 643px;
+    box-sizing: border-box;
+    border-color:transparent;
+    outline:none;
+    color:white;
+    font-family:'Allerta',sans-serif;
+    font-size: 16px;
+    background-color: rgba(0,0,0,0.4);
+    background-size: 25px;
+    background-position: 10px 10px; 
+    padding: 12px 20px 12px 20px;
+    margin:20px 20px 0px 30px;
+}
+input[type=text]:focus{
+	background-color:rgba(0,0,0,0.6);
+}
+
+.surname{
+	margin-left: 20px !important;
+}
+#radio{
+	margin-top:20px;
+}
+#name{
+	width: 300px;
+}
+
+.a{
+	background-color:transparent;
+}
+.ipname{
+	font-size:25px;
+	top:25px;
+	color:white;
+	font-family:'Allerta',sans-serif;
+	padding-left:100px;
+	margin-top:50px;
+}
+.rad{
+	font-size:20px;
+	color:white;
+	margin-left:5px;
+	font-family:'Allerta',sans-serif;
+}
+#avatar{
+	background-color:rgba(0,0,0,0.5);
+	margin: 30px 0px 30px 320px;
+	border-color:transparent;
+	cursor:pointer;
+}
+#bttn {
+    background-color: rgba(0,0,0,0.4); 
+    border: none;
+    position:relative;
+    color: white;
+    font-family:'Allerta',cursive;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom:50px;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
+    outline:none;
+    left:500px;
+}
+#bttn:hover{
+    background-color: rgba(0,0,0,0.6); 
+}
+input[type=radio]{
+opacity:0;
+z-index:1;
+position:absolute;
+}
+#cname{
+	width:260px;
+}
+#conduct{
+	width:200px;
+}
+#sentence{
+	width:200px;
+}
+#convict{
+	display:none;
+}
+#wanted{
+	display:none;
+}
+#bounty{
+	width:300px;
+}
+#exconvict{
+	display:none;
+}
+#ht{
+width:300px;
+}
+#wt{
+width:300px;
+}
+.rad:before{
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  position: relative;
+  left: 0;
+  bottom: 1px;
+  border-radius:100%;
+  background-color:rgba(0,0,0,0.4);
+}
+input[type=radio]:checked + .rad:before {
+    content: "\2022";
+    color: white;
+    font-size: 25px;
+    position:relative;
+    text-align: center;
+    line-height: 14px;
+}
+.hide{
+	display:none;
+}
+#Alive{
+ margin-right:20px;
+}
+#browse1{
+display:none;
+}
+#browse{
+display:none;
+}
+#click{
+	font-family:'Allerta',sans-serif;
+	color:white;
+	top:723px;
+	left:478px;
+	font-size:20px;
+	z-index:-1;
+	position:absolute;
+}
+#click2{
+	font-family:'Allerta',sans-serif;
+	color:white;
+	top:833px;
+	left:478px;
+	font-size:20px;
+	z-index:-1;
+	position:absolute;
+}
+#click3{
+	font-family:'Allerta',sans-serif;
+	color:white;
+	top:1103px;
+	left:478px;
+	font-size:20px;
+	z-index:-1;
+	position:absolute;
+}
+table{
+	margin-left:70px;
+}
+.focus{
+	background-color:rgba(0,0,0,0.7);
+}
+td{
+	background-color:rgba(0,0,0,0.4);
+	color:white;
+	font-family:Allerta, sans-serif;
+	border:2px solid rgba(0,0,0,0.6);
+	font-size:30px;
+	cursor:pointer;
+	padding:30px;
+}
+td:hover{
+	background-color:rgba(0,0,0,0.7);
+}
+.img{
+	font-size:25px;
+	top:725px;
+	color:white;
+	position:absolute;
+	font-family:'Allerta',sans-serif;
+	padding-left:100px;
+	box-sizing:border-box;
+	display:inline-block;
+}
+#im3{
+	top:995px;
+}
+select {
+    width: 100px;
+    height: 30px;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+#nme{
+	padding-right:100px;
+}
+#cal{
+	padding-right:12px;
+}
+#bgrp{
+padding-right:20px;
+}
+#gndr{
+	padding-right:115px;
+}
+#cntry{
+	padding-right:75px;
+}
+#stt{
+	padding-right:102px;
+	padding-left:0px;
+}
+.rade{
+	opacity:0;
+	z-index:1;
+	position:absolute;
+	top:1220px;
+}
+#cty{
+	padding-right:125px;
+	width:200px;
+}
+#pcode{
+	padding-right:69px;
+	padding-left:0;
+}
+
+#id{
+
+	margin-left: 1100px;	
+}

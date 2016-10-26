@@ -15,14 +15,18 @@ session_start();
   <div class="navbar">
     <ul>
       <li><a id="active" href="">Home</a></li>
-      <li><a href="http://localhost:80/records_log.php">Criminal Records</a></li>
+      <li><a href="records_log.php">Criminal Records</a></li>
       <li><a href="#">About</a></li>
-      <li style="float:right"><a href="http://localhost:80/index.html">Logout</a></li>
-      <li style="float:right"><a href="#">Enter new record</a></li>
+      <li style="float:right"><a href="index.html">Logout</a></li>
+      <li style="float:right"><a href="enterRecord.php">Enter new record</a></li>
     </ul>
     <div id="id"> 
     Batch ID: 
     <?php   
+     if (!isset($_SESSION["id"])){
+        header("Location: http://localhost:80/index.html");
+        exit();
+      }
     echo $_SESSION["id"];
     ?>
     </div>
@@ -33,13 +37,14 @@ session_start();
     <p id="rime-in">rime-In</p>
     <p id="dex">Dex</p>
   </div>
-
   <div class="find">
-    <form>
+    <form method="get" action="search_name_log.php">
+    <div>
       <input type="text" class="search" name="search" placeholder="Search..">
-    </form>
-    <form method="get" action="searched_log.php">
-   	 <button class="button">C - Dex Search</button>
+    </div>
+    <div>
+       <button type="submit" class="button">C - Dex Search</button>
+    </div>
     </form>
   </div>
 </body>

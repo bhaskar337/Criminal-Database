@@ -129,3 +129,11 @@ ul.tab li a:focus, .active {
     font-family:'Allerta',sans-serif;
     color: rgb(251,211,27); 
 }
+#namelist{
+
+    display: block;
+}
+#search_result{
+
+     background-color: rgba(0,0,0,0);
+}

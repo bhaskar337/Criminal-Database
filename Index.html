@@ -11,10 +11,10 @@
   <div class="navbar">
     <ul>
       <li><a id="active" href="">Home</a></li>
-      <li><a href="http://localhost:80/records.php">Criminal Records</a></li>
+      <li><a href="records.php">Criminal Records</a></li>
       <li><a href="#">About</a></li>
-      <li style="float:right"><a href="http://localhost:80/login.php">Login</a></li>
-      <li style="float:right"><a href="http://localhost:80/register.php">Register</a></li>
+      <li style="float:right"><a href="login.php">Login</a></li>
+      <li style="float:right"><a href="register.php">Register</a></li>
     </ul>
   </div>
 
@@ -25,11 +25,13 @@
   </div>
 
   <div class="find">
-    <form>
+    <form method="get" action="search_name.php">
+    <div>
       <input type="text" class="search" name="search" placeholder="Search..">
-    </form>
-    <form method="get" action="searched.php">
-   	 <button class="button">C - Dex Search</button>
+    </div>
+    <div>
+   	   <button type="submit" class="button">C - Dex Search</button>
+    </div>
     </form>
   </div>
 </body>
